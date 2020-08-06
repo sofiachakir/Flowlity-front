@@ -38,7 +38,6 @@ class AppContainer extends Component {
             inventoryLevelsData.push([date, level.inventory_level]);
             
         })
-        console.log(inventoryLevelsData);
 
         return (
             <>
@@ -48,18 +47,14 @@ class AppContainer extends Component {
                     selectedProduct={this.state.selectedProductName}
                     onClick={(i, name) => this.handleClick(i, name)} 
                 />
-                if(selectedProductName) {
-                    <InventoryLevelGraph 
-                        inventoryLevelsData={inventoryLevelsData} 
-                    />
-                    <InventoryLevel 
-                        selectedProductId={this.state.selectedProductId} 
-                        selectedProductName={this.state.selectedProductName}
-                        inventoryLevels={this.state.inventoryLevels}
-                    />
-                } else {
-                    <div>Please select a product using the dropdown above</div>
-                }
+                <InventoryLevelGraph 
+                    inventoryLevelsData={inventoryLevelsData} 
+                />
+                <InventoryLevel 
+                    selectedProductId={this.state.selectedProductId} 
+                    selectedProductName={this.state.selectedProductName}
+                    inventoryLevels={this.state.inventoryLevels}
+                />
             </div>
             </>
         )
