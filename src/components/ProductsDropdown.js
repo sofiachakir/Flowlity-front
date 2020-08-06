@@ -23,7 +23,7 @@ class ProductsDropdown extends Component {
 
     render() {
         return (
-            <div className="dropdown">
+            <div className="dropdown mb-3">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Select Product
               </button>

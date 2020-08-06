@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductsDropdown from './ProductsDropdown';
 import InventoryLevel from './InventoryLevel';
+import Navbar from './Navbar';
 import axios from 'axios';
 
 class AppContainer extends Component {
@@ -32,7 +33,8 @@ class AppContainer extends Component {
 
         return (
             <>
-            <div className="container">
+            <Navbar />
+            <div className="container my-5">
                 <ProductsDropdown onClick={(i, name) => this.handleClick(i, name)} />
                 <InventoryLevel 
                     selectedProductId={this.state.selectedProductId} 
