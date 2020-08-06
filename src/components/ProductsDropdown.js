@@ -23,14 +23,19 @@ class ProductsDropdown extends Component {
 
     render() {
         return (
-            <div className="Lists-container">
-                 {this.state.products.map( product => {
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Product
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenu">
+                {this.state.products.map( product => {
                     return (
-                        <div className="single-list" key={product.id}>
+                        <div className="dropdown-item" key={product.id}>
                             <h4>{product.name}</h4>
                         </div>
                     )
                 })}
+              </div>
             </div>
         )
     }
