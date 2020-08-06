@@ -31,9 +31,12 @@ class AppContainer extends Component {
 
 
     render() {
-        var inventoryLevelsData = [['date', 'inventory level']];
+        var inventoryLevelsData = [[{ type: 'date', label: 'Day' }, 'inventory level']];
         this.state.inventoryLevels.map(level => {
-            inventoryLevelsData.push ([Date.parse(level.date), level.inventory_level]);
+            var date_array = level.date.split('-');
+            var date = new Date(date_array[0], date_array[1], date_array[2]);
+            inventoryLevelsData.push([date, level.inventory_level]);
+            
         })
         console.log(inventoryLevelsData);
 
@@ -41,15 +44,22 @@ class AppContainer extends Component {
             <>
             <Navbar />
             <div className="container my-5">
-                <ProductsDropdown onClick={(i, name) => this.handleClick(i, name)} />
-                <InventoryLevelGraph 
-                    inventoryLevelsData={inventoryLevelsData} 
+                <ProductsDropdown 
+                    selectedProduct={this.state.selectedProductName}
+                    onClick={(i, name) => this.handleClick(i, name)} 
                 />
-                <InventoryLevel 
-                    selectedProductId={this.state.selectedProductId} 
-                    selectedProductName={this.state.selectedProductName}
-                    inventoryLevels={this.state.inventoryLevels}
-                />
+                if(selectedProductName) {
+                    <InventoryLevelGraph 
+                        inventoryLevelsData={inventoryLevelsData} 
+                    />
+                    <InventoryLevel 
+                        selectedProductId={this.state.selectedProductId} 
+                        selectedProductName={this.state.selectedProductName}
+                        inventoryLevels={this.state.inventoryLevels}
+                    />
+                } else {
+                    <div>Please select a product using the dropdown above</div>
+                }
             </div>
             </>
         )

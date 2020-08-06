@@ -23,6 +23,7 @@ class ProductsDropdown extends Component {
 
     render() {
         return (
+            <>
             <div className="dropdown mb-3">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Select Product
@@ -37,6 +38,8 @@ class ProductsDropdown extends Component {
                 })}
               </div>
             </div>
+            <h4 className="mb-5">Selected Product: {this.props.selectedProduct}</h4>
+            </>
         )
     }
 }

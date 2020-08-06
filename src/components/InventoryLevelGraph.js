@@ -4,16 +4,16 @@ import Chart from "react-google-charts";
 function InventoryLevelGraph(props) {
     return (            
       <Chart
-        width={'600px'}
-        height={'400px'}
-        chartType="LineChart"
+        width={'100%'}
+        height={'500'}
+        chartType="Line"
         loader={<div>Loading Chart</div>}
         data={props.inventoryLevelsData}
 
         options={{
           title: 'Inventory Levels per date',
           hAxis: {
-            title: 'Date',
+            title: 'Day',
           },
           vAxis: {
             title: 'Inventory Level',

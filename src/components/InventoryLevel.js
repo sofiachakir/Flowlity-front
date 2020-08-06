@@ -2,7 +2,7 @@ import React from 'react';
 
 function InventoryLevel(props) {
     return (            
-        <table className="table">
+        <table className="table my-5">
             <thead>
                 <tr>
                     <th scope="col">Product Id</th>
