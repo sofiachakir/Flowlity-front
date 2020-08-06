@@ -7,20 +7,20 @@ class AppContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            selectedProduct: null,
+            selectedProductId: null,
+            selectedProductName: null,
             inventoryLevels: []
         }
     }   
 
-    handleClick(i) {
-        this.setState({
-            selectedProduct: i
-        })
-        const url = 'api/v1/products/'+ i
+    handleClick(i, name) {
+        const url = 'api/v1/products/'+ i + '/inventory_levels'
         axios.get(url)
         .then(response => {
             console.log(response)
             this.setState({
+                selectedProductId: i,
+                selectedProductName: name,
                 inventoryLevels: response.data
             })
         })
@@ -32,11 +32,14 @@ class AppContainer extends Component {
 
         return (
             <>
-            <ProductsDropdown onClick={i => this.handleClick(i)} />
-            <InventoryLevel 
-                selectedProductId={this.state.selectedProduct} 
-                inventoryLevels={this.state.inventoryLevels}
-            />
+            <div className="container">
+                <ProductsDropdown onClick={(i, name) => this.handleClick(i, name)} />
+                <InventoryLevel 
+                    selectedProductId={this.state.selectedProductId} 
+                    selectedProductName={this.state.selectedProductName}
+                    inventoryLevels={this.state.inventoryLevels}
+                />
+            </div>
             </>
         )
     }

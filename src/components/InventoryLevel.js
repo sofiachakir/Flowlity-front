@@ -16,7 +16,7 @@ function InventoryLevel(props) {
                     return (
                         <tr key={level.id}> 
                             <td>{level.product_id}</td>
-                            <td>{level.product_name}</td>
+                            <td>{props.selectedProductName}</td>
                             <td>{level.date}</td>
                             <td>{level.inventory_level}</td>
                         </tr>

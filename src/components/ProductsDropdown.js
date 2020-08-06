@@ -30,8 +30,8 @@ class ProductsDropdown extends Component {
               <div className="dropdown-menu" aria-labelledby="dropdownMenu">
                 {this.state.products.map( product => {
                     return (
-                        <div className="dropdown-item" key={product.id} onClick={() => this.props.onClick(product.id)}>
-                            <h4>{product.name}</h4>
+                        <div className="dropdown-item" key={product.id} onClick={() => this.props.onClick(product.id, product.name)}>
+                            {product.name}
                         </div>
                     )
                 })}
