@@ -1,15 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import $ from "jquery";
+import "jquery";
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import React from 'react';
 import './App.css';
-import ProductsDropdown from './components/ProductsDropdown';
+import AppContainer from './components/AppContainer';
 
 function App() {
   return (
     <div className="App">
-      
-      <ProductsDropdown />
+      <AppContainer />
     </div>
   );
 }
