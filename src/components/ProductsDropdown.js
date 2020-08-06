@@ -10,7 +10,8 @@ class ProductsDropdown extends Component {
     }    
 
     componentDidMount() {
-        axios.get('http://localhost:3001/api/v1/products.json')
+        const url = 'api/v1/products' 
+        axios.get(url)
         .then(response => {
             console.log(response)
             this.setState({
@@ -23,7 +24,13 @@ class ProductsDropdown extends Component {
     render() {
         return (
             <div className="Lists-container">
-                {this.state.products}
+                 {this.state.products.map( product => {
+                    return (
+                        <div className="single-list" key={product.id}>
+                            <h4>{product.name}</h4>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
