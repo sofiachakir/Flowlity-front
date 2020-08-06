@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductsDropdown from './ProductsDropdown';
 import InventoryLevel from './InventoryLevel';
+import InventoryLevelGraph from './InventoryLevelGraph';
 import Navbar from './Navbar';
 import axios from 'axios';
 
@@ -30,12 +31,20 @@ class AppContainer extends Component {
 
 
     render() {
+        var inventoryLevelsData = [['date', 'inventory level']];
+        this.state.inventoryLevels.map(level => {
+            inventoryLevelsData.push ([Date.parse(level.date), level.inventory_level]);
+        })
+        console.log(inventoryLevelsData);
 
         return (
             <>
             <Navbar />
             <div className="container my-5">
                 <ProductsDropdown onClick={(i, name) => this.handleClick(i, name)} />
+                <InventoryLevelGraph 
+                    inventoryLevelsData={inventoryLevelsData} 
+                />
                 <InventoryLevel 
                     selectedProductId={this.state.selectedProductId} 
                     selectedProductName={this.state.selectedProductName}
